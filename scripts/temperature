@@ -1,0 +1,9 @@
+#!/bin/sh
+# mcli c show --active | grep vpn >/dev/null && echo "<span foreground='#81a1c1' background='#2e3440' size='x-large'></span><span background='#81a1c1'> <span foreground='#2e3440' size='large' rise='1pt'></span> </span><span background='#81a1c1' foreground='#2e3440' size='x-large'></span>" || echo "<span foreground='#81a1c1' background='#2e3440' size='x-large'></span><span background='#81a1c1'> <span foreground='#bf616a' size='large' rise='1pt'></span> </span><span background='#81a1c1' foreground='#2e3440' size='x-large'></span>"
+
+
+t1=$(sensors | grep -Po '^Tctl:( )* \K.*')
+tmps="${t1%000}"
+
+
+echo "<span foreground='#81a1c1' background='#2e3440' size='x-large'></span><span background='#81a1c1'><span foreground='#2e3440' size='small' rise='1pt'> $tmps</span> </span><span background='#81a1c1' foreground='#2e3440' size='x-large'></span>"
