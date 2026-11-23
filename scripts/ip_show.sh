@@ -1,5 +1,6 @@
 #!/bin/bash
-output=$(ip -4 a | grep -Eo 'inet ([0-9]*\.){3}[0-9]+' | grep -Ev '127\.0\.0\.1|172\.17\.0\.1' | awk '{print $2}')
+# Skip loopback, docker and VPN interfaces by name instead of hardcoding addresses
+output=$(ip -4 -o a | awk '$2 !~ /^(lo|docker|br-|veth|wg|tun)/ {split($4, a, "/"); print a[1]}')
 
 if [ -z "$output" ]; then
   echo "[No signal]"

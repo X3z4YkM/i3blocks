@@ -41,7 +41,7 @@ interval=30
 [temperature]
 command=$HOME/.config/i3blocks/scripts/temperature
 markup=pango
-background=#81a1c1
+background=#ff4400
 interval=5
 
 [date]
@@ -56,17 +56,12 @@ background=#5e81ac
 color=#D8DEE9
 interval=1
 
-[rofi-volume]
-command=echo "<span foreground='#81a1c1' size='larger'></span> "; if [ $button ]; then $HOME/.local/bin/rofi_volume_pulsemixer >/dev/null; fi
-markup=pango
-interval=1
-
 [rofi-bluetooth]
-command=echo "<span foreground='#81a1c1' size='larger'></span> "; if [ $button ]; then $HOME/.local/bin/rofi-bluetooth-menu.sh >/dev/null; fi
+command=echo "<span foreground='#00ffff' size='larger'></span> "; if [ $button ]; then $HOME/.local/bin/rofi-bluetooth-menu.sh >/dev/null; fi
 markup=pango
 interval=1
 
 [rofi-powermenu]
-command=echo "<span foreground='#81a1c1' size='large'></span> "; if [ $button ]; then rofi -show menu -modi "menu:~/.local/bin/rofi-power-menu" >/dev/null; fi
+command=echo "<span foreground='#00ff00' size='large'></span> "; if [ $button ]; then rofi -show menu -modi "menu:~/.local/bin/rofi-power-menu" >/dev/null; fi
 markup=pango
 interval=1
