@@ -33,6 +33,11 @@ markup=pango
 min_width=cpucp
 DECIMALS=0
 
+[battery]
+command=$HOME/.config/i3blocks/scripts/battery-show
+markup=pango
+interval=30
+
 [temperature]
 command=$HOME/.config/i3blocks/scripts/temperature
 markup=pango

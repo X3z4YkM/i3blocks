@@ -1,0 +1,25 @@
+#!/bin/sh
+# Battery in the plain style used by volume/cpu: colored icon + small text
+
+status=$(cat /sys/class/power_supply/BAT0/status)
+capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+
+if [ "$capacity" -ge 90 ]; then icon=$(printf '\357\211\200')
+elif [ "$capacity" -ge 65 ]; then icon=$(printf '\357\211\201')
+elif [ "$capacity" -ge 40 ]; then icon=$(printf '\357\211\202')
+elif [ "$capacity" -ge 15 ]; then icon=$(printf '\357\211\203')
+else icon=$(printf '\357\211\204')
+fi
+
+if [ "$status" = "Charging" ]; then
+    color='#a3be8c'
+    icon=$(printf '\357\203\247')
+elif [ "$status" = "Discharging" ] && [ "$capacity" -lt 20 ]; then
+    color='#bf616a'
+elif [ "$status" = "Discharging" ] && [ "$capacity" -lt 50 ]; then
+    color='#ebcb8b'
+else
+    color='#81A1C1'
+fi
+
+echo "<span foreground='$color' size='large'>$icon</span> <span size='small' rise='2pt'>$capacity%</span>"
